@@ -1,0 +1,73 @@
+데코레이터는 class에 함수 추가
+
+controller가 하는일은 url가져오고 함수를 실행하는것
+express의 router 같은 것이다
+컨트롤러 이름 설정할 때 자동으로 그 쪽 url로 라우터를 잡아준다 ㅁㅊ
+
+@Get으로 get request를 얻을 수 있다
+
+nestjs는 컨트롤러를 비즈니스 로직과 구분하고 싶어한다 그래서 appservice를 참조하는 것이다
+서비스가 비지니스 로직
+
+express의 controller.js가 service라고 생각하면 될 것 같다
+AppModule은 우리가 만드는 module을 모두 import할 것이다
+
+========================================
+
+nest g (generate) co (controller) 
+지린다 nest
+
+무언가가 필요하면 요청해야함( ex) @Param("id") movieId:string)
+
+patch는 리소스의 일부분 업데이트
+
+put은 리소스 전체 update
+
+====================================
+express에서 req.body 받으려면 app.use(express.json())해야했지만
+nest는 그냥 받으면 됨
+
+js파일 중간에 true, false , undefined 등등이 있어도 상관없다
+
+=====================================
+DTO(Data Transfer Object)
+
+npm i class-validator class-transformer
+
++"1"은 number로 바꾼다
+
+ValidationPipe 에서 transform 옵션주면 자동으로 바뀐다 우리가 원하는걸로
+
+npm i @nestjs/mapped-types
+//PartialType require를 다 옵션으로 바꿔준다
+
+=================================================
+dependency injection
+
+providers가 그안에 있는 service를 모두 import 해주는것이다
+provider에서 controller로 injection
+
+==================================================
+nest는 express기반이라 req, res객체 사용 가능
+@Req() req, @Res() res
+
+직접사용하는 것은 좋지 않다
+
+nest는 두가지 프레임워크 위에서 작동한다 (express, fastify)
+
+=================================================
+jest는 spec.ts를 찾는다
+
+unit testing 모든 function을 따로 testing 할 수 있다
+
+end-to-end 프로그램 전체
+
+==================================================
+@@@@@@@@@@@@@@@@@@@
+describe에서 service.create쓰는 것과
+describe의 it안에서 service.create가 다르다
+전자에서는 undefined라서 쓰지못한다는 error가 뜸
+
+beforeEach때문에 it안에서 써야하는것으로보임
+beforeEach에서 create해줄수도 있을거다
+@@@@@@@@@@@@@@@@@@@@@@@@@@@
